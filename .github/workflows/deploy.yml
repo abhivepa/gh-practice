@@ -18,12 +18,33 @@ jobs:
     needs: Dependencies
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout to directory
+        uses: 'actions/checkout@v4'
+
+      - name: Install Node
+        uses: 'actions/setup-node@v4'
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm install
+
       - name: Check Lint Errors
         run: npm run lint
   Deploy:
     needs: [Dependencies, Lint]
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout to directory
+        uses: 'actions/checkout@v4'
+
+      - name: Install Node
+        uses: 'actions/setup-node@v4'
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm install
       - name: Running the build
         run: npm run build
       - name: Deploying the build
