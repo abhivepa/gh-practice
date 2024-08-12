@@ -1,0 +1,34 @@
+name: Issues
+on:
+  issues:
+    types: [opened, edited, milestoned]
+jobs:
+  Dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: 'actions/checkout@v4'
+
+      - name: Install node
+        uses: 'actions/setup-node@v4'
+        with:
+          node-version: 18
+
+      - name: Install node_modules
+        run: npm i
+
+  EventDetails:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        run: 'actions/checkout@v4'
+
+      - name: Install node
+        uses: 'actions/setup-node@v4'
+        with:
+          node-version: 18
+      - name: Install node_modules
+        run: npm install
+
+      - name: Event Details
+        run: echo ${{toJson(github)}}
