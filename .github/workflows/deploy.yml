@@ -1,0 +1,22 @@
+name: deploy
+on: push
+jobs:
+  Dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Dependencies
+        run: npm install
+  Lint:
+    needs: Dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Lint Errors
+        run: npm run lint
+  Deploy:
+    needs: [Dependencies, Lint]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Running the build
+        run: npm run build
+      - name: Deploying the build
+        run: echo ${{toJson(github)}}
