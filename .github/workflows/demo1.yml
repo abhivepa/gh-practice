@@ -9,7 +9,8 @@ on:
       - main
     paths:
       - '**.js'
-    paths-ignore: -".github/workflow/*"
+    paths-ignore:
+      - '.github/workflow/*'
 
 jobs:
   Dependencies:
