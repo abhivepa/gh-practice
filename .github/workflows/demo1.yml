@@ -4,6 +4,13 @@ on:
     types: [opened, reopened]
   workflow_dispatch:
 
+  push:
+    branches:
+      - main
+    paths:
+      - '**.js'
+    paths-ignore: -".github/workflow/*"
+
 jobs:
   Dependencies:
     runs-on: ubuntu-latest
