@@ -31,4 +31,4 @@ jobs:
         run: npm install
 
       - name: Event Details
-        run: echo ${{toJson(github)}}
+        run: echo "${{toJson(github)}}"
